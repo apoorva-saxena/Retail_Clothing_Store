@@ -1,7 +1,18 @@
-<% @products.each do |product| %>
-<%= product.name %>
-<%= product.category %>
-$<%= product.price %>
-<%= product.quantity %> in stock
-<%= product.image %>
-<% end %>
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <% @products.each do |product| %>
+            <%= image_tag(product.image, alt: "Image not available", class: "product-image") %>
+            <br>
+            <%= product.name %>
+            <br>
+            <%= product.category %>
+            <br>
+            £<%= product.price %>
+            <br>
+            <%= product.quantity %>in stock
+            <br>
+            <% end %>
+        </div>
+    </div>
+</div>
