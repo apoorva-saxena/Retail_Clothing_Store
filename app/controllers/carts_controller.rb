@@ -1,15 +1,16 @@
 class CartsController < ApplicationController
 		def index
+			puts "==================1"
+			puts session[:cart]
+			puts "==================3"
 			session[:cart] ||= []
 			@products = session[:cart].map {|id| Product.find id}
-      puts "======================="
-      puts @products
 		end
 
 		def create
-      puts "==============1"
-      puts product.id
-			session[:cart] << params[:product_id]
+			puts "=====================2"
+			session[:cart] << params[:id]
+			puts session[:cart]
 		end
 
 		def destroy
@@ -18,11 +19,4 @@ class CartsController < ApplicationController
 			puts session[:cart]
 		end
 
-    def show
-      puts "==============show"
-      puts id
-      puts params
-      @products = session[:cart].map {|id| Product.find id}
-
-    end
 end
