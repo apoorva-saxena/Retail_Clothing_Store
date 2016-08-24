@@ -1,5 +1,4 @@
-Item in cart: <div id="increment-cart"> </div>
-<div id="cartCount"> items in cart: 0 </p>
+Item in cart: <div id="increment-cart"> 0 </div>
     <% @products.each do |product| %>
 <div class="row">
     <div class="col-sm-6 col-md-4">
@@ -17,7 +16,7 @@ Item in cart: <div id="increment-cart"> </div>
             <%= product.quantity %> in stock
             <br>
         </div>
-        <button type="button" id=<%=product.id%> > add to cart</button>
+        <button type="button" class="product_buttons" id=<%=product.id%> > add to cart</button>
     </div>
 </div>
 <% end %>

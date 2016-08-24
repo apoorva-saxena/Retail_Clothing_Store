@@ -19,4 +19,7 @@ class CartsController < ApplicationController
 			puts session[:cart]
 		end
 
+		def clear_session
+			session.clear
+		end
 end
