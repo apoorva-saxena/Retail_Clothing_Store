@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-feature 'user sees a list of items' do
+feature 'Products' do
 
-  context 'details of the Product' do
+  context 'User sees products' do
     before do
       dummy_products
       visit '/products'
@@ -39,7 +39,7 @@ feature 'user sees a list of items' do
     end
   end
 
-  context 'has no data in database' do
+  context 'User sees no products' do
     scenario 'noting visible on the screen' do
       visit '/products'
       expect(page).to have_content ''

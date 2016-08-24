@@ -1,3 +1,5 @@
+Item in cart: <div id="increment-cart"> </div>
+<div id="cartCount"> items in cart: 0 </p>
 <div class="row">
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
@@ -10,8 +12,9 @@
             <br>
             £<%= product.price %>
             <br>
-            <%= product.quantity %>in stock
+            <%= product.quantity %> in stock
             <br>
+            <a href="/carts/<%= product.id %>"> Add to cart </a>
             <% end %>
         </div>
     </div>
