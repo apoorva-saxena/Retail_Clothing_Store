@@ -25,3 +25,11 @@ Product.create name: "Lightweight Patch Pocket Blazer, Deer", category: "Men's F
 Product.create name: "Bird Print Dress, Black", category: "Women's Formalwear", price: 270, quantity: 10, image: 'blackdress.jpg'
 
 Product.create name: "Mid Twist Cut-Out Dress Pink", category: "Women's Formalwear", price: 540, quantity: 5, image: 'pinkdress.jpeg'
+
+Voucher.destroy_all
+
+Voucher.create name: "£5 off your order", discount_amount: 5, spend_requirement: 0, category_requirements: nil
+
+Voucher.create name: "£10 off when you spend over £50", discount_amount: 10, spend_requirement: 50, category_requirements: nil
+
+Voucher.create name: "£15 off when you have bought at least one footwear item and spent over £75", discount_amount: 15, spend_requirement: 75, category_requirements: "Footwear"

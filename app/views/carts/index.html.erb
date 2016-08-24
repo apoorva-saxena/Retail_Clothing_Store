@@ -1,6 +1,14 @@
 <h1> Cart </h2>
+<% @product_map.each do |product, count| %>
+  <%= product.name %> : <%= count %>
+  <br>
+  <% end %>
 
-  <% @products.each do |product| %>
-    <%= product.name %>
-    <% end %>
-    
+<br>
+<br>
+<% @vouchers.each do |voucher| %>
+<%= voucher.name %>
+<br>
+<%end %>
+
+<div id="finalBill"> bill:<%= @bill_without_voucher %> </div>

@@ -1,14 +1,14 @@
 class CartsController < ApplicationController
 		def index
-			puts "==================1"
-			puts session[:cart]
-			puts "==================3"
 			session[:cart] ||= []
 			@products = session[:cart].map {|id| Product.find id}
+			@product_map = Hash.new(0)
+			@products.map{|product| @product_map[product]+=1}
+			@vouchers = Voucher.all
+			@bill_without_voucher = (@products.map{|product| product.price}).reduce(0, :+)
 		end
 
 		def create
-			puts "=====================2"
 			session[:cart] << params[:id]
 			puts session[:cart]
 		end
