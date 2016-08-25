@@ -1,18 +1,27 @@
-<h1> Cart </h2>
+<h1>
+    Cart
+</h2>
 <% @product_map.each do |product, count| %>
-  <%= product.name %> : <%= count %>
-  <br>
-  <button type="button" class="removeitem" id=<%=product.id%> > Remove item</button>
-  <br>
+<%= product.name %>: <%= count %>
+<br>
+<button type="button" class="removeitem" id=<%=product.id%>>
+    Remove item</button>
+<br>
 </div>
-  <br>
-  <% end %>
+<br>
+<% end %>
 
 <br>
 <br>
 <% @vouchers.each do |voucher| %>
-<%= voucher.name %>
+<form method="post", action='/voucher'>
+<input type=checkbox class="voucherCheckbox" id=voucher_<%=voucher.id%>>
+<%= label_tag(voucher.id, voucher.name) %>
 <br>
 <%end %>
+</form>
+<br>
+<br>
+bill without voucher applied: <div id="finalBill"><%=@bill_without_voucher %></div>
 
-<div id="finalBill"> bill:<%= @bill_without_voucher %> </div>
+bill with voucher: <div id="finalbillwithvoucher"><%=@bill_without_voucher %></div>
