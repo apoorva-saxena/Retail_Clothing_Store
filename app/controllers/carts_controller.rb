@@ -15,6 +15,9 @@ class CartsController < ApplicationController
 
 		def destroy
 			id = params[:id]
+			puts "================1"
+			puts id
+			# session.data.delete :id
 			session[:cart].delete_at session[:cart].index(id)
 			puts session[:cart]
 		end
