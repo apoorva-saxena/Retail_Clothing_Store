@@ -1,4 +1,4 @@
-Item in cart: <div id="increment-cart"> <%=@cart_size%> </div>
+items in cart: <div id="increment-cart"> <%=@cart_size%> </div>
     <% @products.each do |product| %>
     <div class="col-sm-6 col-md-6">
             <%= image_tag(product.image, alt: "Image not available", size: "100x100") %>
@@ -12,6 +12,6 @@ Item in cart: <div id="increment-cart"> <%=@cart_size%> </div>
             <br>
             <%= product.quantity %> in stock
             <br>
-            <button type="button" class="product_buttons" id=<%=product.id%> > add to cart</button>
+            <button type="button" class="product_buttons" id=<%=product.id%> > Add to cart</button>
     </div>
 <% end %>

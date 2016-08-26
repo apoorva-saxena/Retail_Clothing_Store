@@ -6,21 +6,15 @@ class CartsController < ApplicationController
 			@products.map{|product| @product_map[product]+=1}
 			@vouchers = Voucher.all
 			@bill_without_voucher = (@products.map{|product| product.price}).reduce(0, :+)
-			@vouchers_selected ||= []
-			voucher_params
-			puts "============="
-			puts @vouchers_selected
 		end
 
 		def create
 			session[:cart] << params[:id]
-			puts session[:cart]
 		end
 
 		def destroy
 			id = params[:id]
 			session[:cart].delete_at session[:cart].index(id)
-			puts session[:cart]
 		end
 
 		def clear_session

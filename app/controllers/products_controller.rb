@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    session[:cart] ||= []
     @cart_size = session[:cart].count
+    @products = Product.all
   end
 end

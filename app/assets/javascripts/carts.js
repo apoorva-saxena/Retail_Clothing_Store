@@ -20,8 +20,10 @@ function apply_voucher_discount(id) {
         discount = 5;
     } else if (id == 'voucher_2' && amount >= 50) {
         discount = 10;
-    } else if (id == 'voucher_3' && amount >= 75) {
+    } else if (id == 'voucher_3' && amount >= 75 && ($("#productCategory").text() == "Women's Footwear" || $("#productCategory").text() == "Men's Footwear")) {
         discount = 15;
+    } else {
+        alert("Wrong voucher");
     }
     console.log('final amount =', amount - discount)
     $("#finalbillwithvoucher").text(amount - discount);

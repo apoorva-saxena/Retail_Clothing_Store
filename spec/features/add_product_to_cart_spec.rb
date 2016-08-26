@@ -16,4 +16,21 @@ feature 'Shopping cart' do
       expect(page).to have_content 'items in cart: 0'
     end
   end
+
+  context 'products have been added' do
+    before do
+      dummy_products
+      visit '/products'
+      visit "/carts/#{@product.id}"
+      visit '/carts'
+    end
+
+    scenario 'displays item in cart as 1' do
+      expect(page).to have_content 'item1'
+    end
+
+    scenario 'displays the price of the product' do
+      expect(page).to have_content '1.23'
+    end
+  end
 end

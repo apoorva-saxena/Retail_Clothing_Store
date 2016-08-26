@@ -3,6 +3,7 @@
 </h2>
 <% @product_map.each do |product, count| %>
 <%= product.name %>: <%= count %>
+<div id="productCategory"><% product.category %></div>
 <br>
 <button type="button" class="removeitem" id=<%=product.id%>>
     Remove item</button>
