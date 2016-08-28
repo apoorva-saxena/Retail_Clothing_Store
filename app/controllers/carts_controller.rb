@@ -15,6 +15,7 @@ class CartsController < ApplicationController
 		def destroy
 			id = params[:id]
 			session[:cart].delete_at session[:cart].index(id)
+			redirect_to('/carts')
 		end
 
 		def clear_session

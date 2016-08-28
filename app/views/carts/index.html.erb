@@ -5,8 +5,9 @@
 <%= product.name %>: <%= count %>
 <div id="productCategory"><% product.category %></div>
 <br>
-<button type="button" class="removeitem" id=<%=product.id%>>
-    Remove item</button>
+<form method="GET" action="/delete/<%=product.id%>">
+<input type="submit" name="remove" value="Remove item" class="removeitem" id=<%=product.id%>>
+</form>
 <br>
 </div>
 <br>
