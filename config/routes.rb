@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/clear_session' => 'carts#clear_session'
   get '/delete/:id' => 'carts#destroy'
   post '/voucher' => 'cart#voucher_params'
+
 end

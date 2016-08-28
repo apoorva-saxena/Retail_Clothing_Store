@@ -17,7 +17,7 @@ feature 'Products' do
     end
 
     scenario 'price' do
-      expect(page).to have_content '1.23'
+      expect(page).to have_content '123'
     end
 
     scenario 'quantity' do

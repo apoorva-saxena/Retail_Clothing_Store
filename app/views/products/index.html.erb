@@ -10,7 +10,7 @@ items in cart: <div id="increment-cart"> <%=@cart_size%> </div>
             <br>
             £<%= product.price %>
             <br>
-            <%= product.quantity %> in stock
+            <div id="productQuantity_<%= product.id %>"> <%= product.quantity %> </div> in stock
             <br>
             <button type="button" class="product_buttons" id=<%=product.id%> > Add to cart</button>
     </div>

@@ -30,7 +30,7 @@ feature 'Shopping cart' do
     end
 
     scenario 'displays the price of the product' do
-      expect(page).to have_content '1.23'
+      expect(page).to have_content '123'
     end
   end
 end
