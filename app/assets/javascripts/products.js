@@ -1,13 +1,14 @@
-$(document).ready(function() {
+function setClickHandlers() {
     $(".product_buttons").click(function() {
         var id = this.id;
-        var current_stock = parseInt($('#productQuantity_' + id).text());
+        var current_stock = parseInt($('#productQuantity_' + id).text(), 10);
         if (current_stock == 1) {
-            document.getElementById(this.id).disabled = true;
+            $(this.id).disabled = true;
         }
-          $('#productQuantity_' + id).text(current_stock - 1)
-          var count = parseInt($('#increment-cart').text())
+          $('#productQuantity_' + id).text(current_stock - 1);
+          var count = parseInt($('#increment-cart').text(), 10);
           $('#increment-cart').text(count + 1);
-          $.get('/carts/' + id)
+          $.get('/carts/' + id);
     });
-});
+}
+$(document).ready(setClickHandlers);
