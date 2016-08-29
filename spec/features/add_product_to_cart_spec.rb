@@ -13,7 +13,7 @@ feature 'Shopping cart' do
     end
 
     scenario 'displays items in cart as 0' do
-      expect(page).to have_content 'items in cart: 0'
+      expect(page).to have_content '0'
     end
   end
 

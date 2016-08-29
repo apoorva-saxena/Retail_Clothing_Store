@@ -23,10 +23,6 @@ feature 'Products' do
     scenario 'quantity' do
       expect(page).to have_content '4'
     end
-
-    scenario 'image' do
-      expect(page).to have_css("img[src*='shoes.jpg']")
-    end
   end
 
   context 'User sees no products' do

@@ -1,17 +1,33 @@
-items in cart: <div id="increment-cart"> <%=@cart_size%> </div>
-    <% @products.each do |product| %>
-    <div class="col-sm-6 col-md-6">
-            <%= image_tag(product.image, alt: "Image not available", size: "100x100") %>
-            <br>
-            <%= product.name %>
-            ID:<%= product.id %>
-            <br>
-            <%= product.category %>
-            <br>
-            £<%= product.price %>
-            <br>
-            <div id="productQuantity_<%= product.id %>"> <%= product.quantity %> </div> in stock
-            <br>
-            <button type="button" class="product_buttons" id=<%=product.id%> > Add to cart</button>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <div id="increment-cart">
+            <%=@cart_size%>
+        </div>
     </div>
+    <div class="shopname">The Retail Shop</div>
+    <div class="linktocart">
+        <a href="/carts">See your cart</a>
+    </div>
+</div>
+</div>
+<% @products.each do |product| %>
+<div class="col-sm-4">
+<%= image_tag(product.image, alt: "Image not available", size: "100x100") %>
+<br>
+<%= product.name %>
+ID:<%= product.id %>
+<br>
+<%= product.category %>
+<br>
+£<%= product.price %>
+<br>
+<div id="productQuantity_<%= product.id %>">
+    <%= product.quantity %>
+</div>
+in stock
+<br>
+<button type="button" class="product_buttons" id=<%=product.id%>>
+    Add to cart</button>
+</div>
 <% end %>

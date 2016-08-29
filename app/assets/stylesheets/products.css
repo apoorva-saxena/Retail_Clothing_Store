@@ -1,0 +1,25 @@
+/*// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/*/
+
+
+.shopname {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
+}
+
+.linktocart {
+  position: absolute;
+  top: 30px;
+  right: 16px;
+  font-size: 15px;
+}
+
+#increment-cart {
+  position: absolute;
+  top: 15px;
+  left: 35px;
+  font-size: 15px;
+}

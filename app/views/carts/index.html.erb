@@ -1,12 +1,11 @@
-<h1>
-    Cart
-</h2>
+<h3> Shopping Basket </h3>
 <% @product_map.each do |product, count| %>
-<%= product.name %>: <%= count %>
+<%= image_tag(product.image, alt: "Image not available", size: "100x100") %>
+<%= product.name %>:<%= count %>
 <div id="productCategory"><% product.category %></div>
 <br>
 <form method="GET" action="/delete/<%=product.id%>">
-<input type="submit" name="remove" value="Remove item" class="removeitem" id=<%=product.id%>>
+    <input type="submit" name="remove" value="Remove item" class="removeitem" id=<%=product.id%>>
 </form>
 <br>
 </div>
@@ -15,15 +14,19 @@
 
 <br>
 <br>
-<% @vouchers.each do |voucher| %>
-<form method="post", action='/voucher'>
-<input type=checkbox class="voucherCheckbox" id=voucher_<%=voucher.id%>>
-<%= label_tag(voucher.id, voucher.name) %>
-<br>
-<%end %>
-</form>
-<br>
-<br>
-bill without voucher applied: <div id="finalBill"><%=@bill_without_voucher %></div>
 
-bill with voucher: <div id="finalbillwithvoucher"><%=@bill_without_voucher %></div>
+<%= form_tag("/voucher/apply", method: "post") do %>
+<% @vouchers.each do |voucher| %>
+  <%=radio_button_tag('voucher_id', voucher.id) %>
+  <%= label_tag(voucher.id, voucher.name) %>
+<% end %>
+<%= submit_tag("Apply Voucher") %>
+<% end %>
+
+<br>
+<br>
+voucher_applied =
+bill without voucher applied:
+<div id="finalBill"><%=@bill_without_voucher %></div>
+<br>
+<div id="finalbillwithvoucher"><%=@bill_with_voucher %></div>

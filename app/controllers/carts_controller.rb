@@ -1,11 +1,18 @@
 class CartsController < ApplicationController
 		def index
+			if params[:voucher_applied]
+				voucher = Voucher.find params[:voucher_applied]
+				discount = voucher.discount_amount
+			else
+				discount = 0
+			end
 			session[:cart] ||= []
 			@products = session[:cart].map {|id| Product.find id}
 			@product_map = Hash.new(0)
 			@products.map{|product| @product_map[product]+=1}
 			@vouchers = Voucher.all
 			@bill_without_voucher = (@products.map{|product| product.price}).reduce(0, :+)
+			@bill_with_voucher = @bill_without_voucher - discount
 		end
 
 		def create
@@ -22,13 +29,4 @@ class CartsController < ApplicationController
 			session.clear
 		end
 
-		def voucher_params
-			@vouchers_selected << params[:voucher]
-		end
-
-		# private
-		# #
-		# # def bill_with_voucher
-		# # 	@bill_without_voucher =
-		# # end
 end
