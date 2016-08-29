@@ -27,12 +27,12 @@ ID:<%= product.id %>
 </div>
 in stock
 <br>
-<button type="button" class="product_buttons" id=<%=product.id%>
 <% if product.quantity == @product_map[product]%>
-  disabled>
+<button type="button" class="product_buttons btn btn-success" id=<%=product.id%> disabled>
   <%else %>
-  enabled>
-  <%end%>
-    Add to cart</button>
+<button type="button" class="product_buttons btn btn-success" id=<%=product.id%> enabled>
+<%end%>
+    Add to cart <span class="glyphicon glyphicon-play"></span></button>
 </div>
+
 <% end %>

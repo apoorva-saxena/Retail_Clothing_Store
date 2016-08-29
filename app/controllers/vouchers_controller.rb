@@ -9,10 +9,10 @@ class VouchersController < ApplicationController
     end
     products_in_cart.each do |product|
       if product.category.include? category_requirements
-         true
+         return true
       end
     end
-     false
+     return false
   end
 
   def verify_spend_requirement?(spend_requirement, bill_without_voucher)
@@ -33,11 +33,13 @@ class VouchersController < ApplicationController
     else
       voucher_invalid = true
     end
-    # puts "Total discount=#{total_discount} and invalid=#{voucher_invalid}"
+    puts "Total discount=#{total_discount} and invalid=#{voucher_invalid}"
     if voucher_invalid
       redirect_to('/carts')
+      flash[:notice] = "Voucher cannot be applied as it does not meet the requirements!"
     else
       redirect_to ("/carts?voucher_applied=#{voucher.id}")
+      flash[:notice] = "Voucher applied successfully! Discount = #{voucher.discount_amount} £"
     end
   end
 

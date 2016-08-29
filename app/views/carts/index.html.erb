@@ -1,31 +1,66 @@
-<h3> Shopping Basket </h3>
-<% @product_map.each do |product, count| %>
-<%= image_tag(product.image, alt: "Image not available", size: "100x100") %>
-<%= product.name %>:<%= count %>
-<div id="productCategory"><% product.category %></div>
-<br>
-<form method="GET" action="/delete/<%=product.id%>">
-    <input type="submit" name="remove" value="Remove item" class="removeitem" id=<%=product.id%>>
-</form>
-<br>
-</div>
-<br>
-<% end %>
+<h3>
+    Shopping basket
+</h3>
+<div><a href="/products"> back to products </a></div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @product_map.each do |product, count| %>
+        <tr>
+            <td class="col-sm-3">
+                <%= image_tag(product.image, alt: "Image not available", size: "100x100") %>
+            </td>
+            <td class="col-sm-3">
+                <%= product.name %>
+            </td>
+            <td>
+                <%= product.price %>
+            </td>
+            <td>
+                <%= count %>
+            </td>
+            <td>
+                <strong><%= product.price * count %></strong>
+            </td>
+            <td>
+                <form method="GET" action="/delete/<%=product.id%>">
+                    <input type="submit" name="remove" value="Remove item" class="removeitem btn btn-danger" id=<%=product.id%>>
+                </form>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
 
 <br>
 <br>
-
+<br>
 <%= form_tag("/voucher/apply", method: "post") do %>
 <% @vouchers.each do |voucher| %>
+<% if voucher.id == @voucher_enabled %>
+  <%=radio_button_tag('voucher_id', voucher.id, true) %>
+<% else %>
   <%=radio_button_tag('voucher_id', voucher.id) %>
-  <%= label_tag(voucher.id, voucher.name) %>
-  <br>
+<%end%>
+<%= label_tag(voucher.id, voucher.name) %>
+<br>
 <% end %>
 <%= submit_tag("Apply Voucher") %>
 <% end %>
 
 <br>
 <br>
-Total bill: <div id="finalBill"><%=@bill_without_voucher %></div>
+Total bill:
+<div id="finalBill"><%=@bill_without_voucher %></div>
 <br>
-Total bill after voucher: <div id="finalbillwithvoucher"><%=@bill_with_voucher %></div>
+Total bill after voucher:
+<div id="finalbillwithvoucher"><%=@bill_with_voucher %></div>

@@ -3,8 +3,10 @@ class CartsController < ApplicationController
 			if params[:voucher_applied]
 				voucher = Voucher.find params[:voucher_applied]
 				discount = voucher.discount_amount
+				@voucher_enabled = voucher.id
 			else
 				discount = 0
+				@voucher_enabled = 0
 			end
 			session[:cart] ||= []
 			@products = session[:cart].map {|id| Product.find id}
