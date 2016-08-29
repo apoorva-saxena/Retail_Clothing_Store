@@ -23,11 +23,16 @@ ID:<%= product.id %>
 £<%= product.price %>
 <br>
 <div id="productQuantity_<%= product.id %>">
-    <%= product.quantity %>
+    <%= product.quantity - @product_map[product]%>
 </div>
 in stock
 <br>
-<button type="button" class="product_buttons" id=<%=product.id%>>
+<button type="button" class="product_buttons" id=<%=product.id%>
+<% if product.quantity == @product_map[product]%>
+  disabled>
+  <%else %>
+  enabled>
+  <%end%>
     Add to cart</button>
 </div>
 <% end %>

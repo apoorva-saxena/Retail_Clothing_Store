@@ -19,14 +19,13 @@
 <% @vouchers.each do |voucher| %>
   <%=radio_button_tag('voucher_id', voucher.id) %>
   <%= label_tag(voucher.id, voucher.name) %>
+  <br>
 <% end %>
 <%= submit_tag("Apply Voucher") %>
 <% end %>
 
 <br>
 <br>
-voucher_applied =
-bill without voucher applied:
-<div id="finalBill"><%=@bill_without_voucher %></div>
+Total bill: <div id="finalBill"><%=@bill_without_voucher %></div>
 <br>
-<div id="finalbillwithvoucher"><%=@bill_with_voucher %></div>
+Total bill after voucher: <div id="finalbillwithvoucher"><%=@bill_with_voucher %></div>
