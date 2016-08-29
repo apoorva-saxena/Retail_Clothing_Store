@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-body">
-        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <a href="/carts"><span class="glyphicon glyphicon-shopping-cart"></span></a>
         <div id="increment-cart">
             <%=@cart_size%>
         </div>
@@ -16,15 +16,14 @@
 <%= image_tag(product.image, alt: "Image not available", size: "100x100") %>
 <br>
 <%= product.name %>
-ID:<%= product.id %>
 <br>
 <%= product.category %>
 <br>
 £<%= product.price %>
 <br>
-<div id="productQuantity_<%= product.id %>">
+<span id="productQuantity_<%= product.id %>">
     <%= product.quantity - @product_map[product]%>
-</div>
+</span>
 in stock
 <br>
 <% if product.quantity == @product_map[product]%>
@@ -34,5 +33,4 @@ in stock
 <%end%>
     Add to cart <span class="glyphicon glyphicon-play"></span></button>
 </div>
-
 <% end %>

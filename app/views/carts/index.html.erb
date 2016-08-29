@@ -22,13 +22,13 @@
             <td class="col-sm-3">
                 <%= product.name %>
             </td>
-            <td>
+            <td class="col-sm-1">
                 <%= product.price %>
             </td>
-            <td>
+            <td class="col-sm-1">
                 <%= count %>
             </td>
-            <td>
+            <td class="col-sm-1">
                 <strong><%= product.price * count %></strong>
             </td>
             <td>
@@ -38,12 +38,25 @@
             </td>
         </tr>
         <% end %>
+
     </tbody>
 </table>
-
+<table class="table table-hover">
+<tbody>
+  <tr>
+    <td class="col-sm-6 text-align: left"></td>
+  <td class="col-sm-3"> <strong> Total bill: <div id="finalBill"><%=@bill_without_voucher %></div> <strong></td>
+  </tr>
+  <tr>
+      <td class="col-sm-6 text-align: left"></td>
+  <td class="col-sm-3 "> <strong> Bill with vouchers: <div id="finalbillwithvoucher"><%=@bill_with_voucher %></div> <strong></td>
+  </tr>
+</tbody>
+</table>
 <br>
 <br>
 <br>
+<h4> Vouchers: </h4>
 <%= form_tag("/voucher/apply", method: "post") do %>
 <% @vouchers.each do |voucher| %>
 <% if voucher.id == @voucher_enabled %>
@@ -58,9 +71,3 @@
 <% end %>
 
 <br>
-<br>
-Total bill:
-<div id="finalBill"><%=@bill_without_voucher %></div>
-<br>
-Total bill after voucher:
-<div id="finalbillwithvoucher"><%=@bill_with_voucher %></div>
