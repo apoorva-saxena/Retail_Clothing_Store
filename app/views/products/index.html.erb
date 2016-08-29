@@ -10,10 +10,10 @@
         <a href="/carts">See your cart</a>
     </div>
 </div>
-</div>
+<div class="container">
 <% @products.each do |product| %>
-<div class="col-sm-4">
-<%= image_tag(product.image, alt: "Image not available", size: "100x100") %>
+<div class="col-sm-4" class="container">
+<%= image_tag(product.image, alt: "Image not available", size: "110x125") %>
 <br>
 <%= product.name %>
 <br>
@@ -34,3 +34,4 @@ in stock
     Add to cart <span class="glyphicon glyphicon-play"></span></button>
 </div>
 <% end %>
+</div>

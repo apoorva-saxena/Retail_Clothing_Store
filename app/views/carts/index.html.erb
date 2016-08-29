@@ -32,7 +32,7 @@
                 <strong><%= product.price * count %></strong>
             </td>
             <td>
-                <form method="GET" action="/delete/<%=product.id%>">
+                <form method="GET" action="/remove_from_session/<%=product.id%>">
                     <input type="submit" name="remove" value="Remove item" class="removeitem btn btn-danger" id=<%=product.id%>>
                 </form>
             </td>

@@ -23,26 +23,30 @@ class VouchersController < ApplicationController
     end
   end
 
-  def apply_voucher_discount
-    if !(params.has_key?(:voucher_id))
-      redirect_to("/carts", warning: "Please select a voucher!")
+  def check_voucher_validity(applied_voucher)
+    products_in_cart = session[:cart].map {|id| Product.find id}
+    bill_without_voucher = (products_in_cart.map{|product| product.price}).reduce(0, :+)
+
+    if verify_category_requirement?(applied_voucher.category_requirements, products_in_cart) &&
+       verify_spend_requirement?(applied_voucher.spend_requirement, bill_without_voucher)
+      voucher_invalid = false
     else
-      total_discount = 0
-      products_in_cart = session[:cart].map {|id| Product.find id}
-      bill_without_voucher = (products_in_cart.map{|product| product.price}).reduce(0, :+)
-      voucher = Voucher.find params[:voucher_id]
-      if verify_category_requirement?(voucher.category_requirements, products_in_cart) && verify_spend_requirement?(voucher.spend_requirement, bill_without_voucher)
-        voucher_invalid = false
-      else
-        voucher_invalid = true
-      end
-      puts "Total discount=#{total_discount} and invalid=#{voucher_invalid}"
-      if voucher_invalid
-        redirect_to('/carts', warning: "Voucher cannot be applied as it does not meet the requirements!")
-      else
-        redirect_to("/carts?voucher_applied=#{voucher.id}", success: "Voucher applied successfully! Discount = #{voucher.discount_amount} £")
-      end
+      voucher_invalid = true
     end
   end
 
+  def apply_voucher_discount
+    if !(params.has_key?(:voucher_id))
+      # No voucher selected.
+      redirect_to("/carts", warning: "Please select a voucher!")
+    else
+      applied_voucher = Voucher.find params[:voucher_id]
+      voucher_invalid = check_voucher_validity(applied_voucher)
+      if voucher_invalid
+        redirect_to('/carts', warning: "Voucher cannot be applied as it does not meet the requirements!")
+      else
+        redirect_to("/carts?voucher_applied=#{applied_voucher.id}", success: "Voucher applied successfully! Discount = £#{applied_voucher.discount_amount}")
+      end
+    end
+  end
 end

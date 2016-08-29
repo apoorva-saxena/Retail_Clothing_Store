@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/*/
 
-
 .shopname {
     position: absolute;
     top: 8px;
@@ -17,9 +16,9 @@
   font-size: 15px;
 }
 
-#increment-cart {
-  position: absolute;
-  top: 15px;
-  left: 35px;
-  font-size: 15px;
-}
+ #increment-cart {
+   position: absolute;
+   top: 15px;
+   left: 35px;
+   font-size: 15px;
+ }

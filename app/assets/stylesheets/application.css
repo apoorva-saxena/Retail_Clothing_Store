@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+ .shopname {
+     position: absolute;
+     top: 8px;
+     right: 16px;
+     font-size: 18px;
+ }
+
+ .linktocart {
+   position: absolute;
+   top: 30px;
+   right: 16px;
+   font-size: 15px;
+ }
