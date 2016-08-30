@@ -23,6 +23,11 @@ feature 'Products' do
     scenario 'quantity' do
       expect(page).to have_content '4'
     end
+
+    scenario 'expect page to have button to add product' do
+      expect(page).to have_css('.product_buttons')
+    end
+
   end
 
   context 'User sees no products' do

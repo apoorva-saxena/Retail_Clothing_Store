@@ -7,4 +7,5 @@ class ProductsController < ApplicationController
     @product_map = Hash.new(0)
     @products_in_cart.map{|product| @product_map[product]+=1}
   end
+
 end

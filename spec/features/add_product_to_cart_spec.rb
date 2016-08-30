@@ -28,19 +28,19 @@ feature 'Shopping cart' do
     end
 
     scenario 'displays the name of the product in cart'do
-      visit "/carts/#{@product.id}"
+      page.driver.post('/carts', { :id => "#{@product.id}" })
       visit '/carts'
       expect(page).to have_content 'item1'
     end
 
     scenario 'displays the number of products added in cart' do
-      visit "/carts/#{@product.id}"
+      page.driver.post('/carts', { :id => "#{@product.id}" })
       visit '/carts'
       expect(page).to have_content '1'
     end
 
     scenario 'displays the total price to be paid' do
-      visit "/carts/#{@product.id}"
+      page.driver.post('/carts', { :id => "#{@product.id}" })
       visit '/carts'
       expect(page).to have_content '123'
     end

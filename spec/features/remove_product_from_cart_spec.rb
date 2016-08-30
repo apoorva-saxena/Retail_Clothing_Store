@@ -6,7 +6,7 @@ feature 'Remove from cart' do
     before do
       dummy_products
       visit '/products'
-      visit "/carts/#{@product.id}"
+      page.driver.post('/carts', { :id => "#{@product.id}" })
       visit '/carts'
     end
 
