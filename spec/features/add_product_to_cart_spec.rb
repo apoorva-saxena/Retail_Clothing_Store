@@ -21,15 +21,27 @@ feature 'Shopping cart' do
     before do
       dummy_products
       visit '/products'
-      visit "/carts/#{@product.id}"
-      visit '/carts'
     end
 
     scenario 'displays item in cart as 1' do
+      expect(page).to have_content '1'
+    end
+
+    scenario 'displays the name of the product in cart'do
+      visit "/carts/#{@product.id}"
+      visit '/carts'
       expect(page).to have_content 'item1'
     end
 
-    scenario 'displays the price of the product' do
+    scenario 'displays the number of products added in cart' do
+      visit "/carts/#{@product.id}"
+      visit '/carts'
+      expect(page).to have_content '1'
+    end
+
+    scenario 'displays the total price to be paid' do
+      visit "/carts/#{@product.id}"
+      visit '/carts'
       expect(page).to have_content '123'
     end
   end

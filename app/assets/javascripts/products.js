@@ -5,10 +5,10 @@ function setClickHandlers() {
         if (current_stock == 1) {
             $(id).disabled = true;
         }
-          $('#productQuantity_' + id).text(current_stock - 1);
-          var count = parseInt($('#increment-cart').text(), 10);
-          $('#increment-cart').text(count + 1);
-          $.post('/carts/', {'id': id});
+        $('#productQuantity_' + id).text(current_stock - 1);
+        var count = parseInt($('#increment-cart').text(), 10);
+        $('#increment-cart').text(count + 1);
+        $.get('/carts/'+id);
     });
 }
 $(document).ready(setClickHandlers);

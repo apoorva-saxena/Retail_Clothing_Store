@@ -24,5 +24,11 @@ feature 'Adds voucher' do
       click_button('Apply Voucher')
       expect(page).to have_content('123')
     end
+
+    scenario 'expect page to show the initial total amount also' do
+      page.choose('voucher_id')
+      click_button('Apply Voucher')
+      expect(page).to have_content("Voucher applied successfully")
+    end
   end
 end
