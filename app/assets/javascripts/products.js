@@ -8,7 +8,9 @@ function setClickHandlers() {
         $('#productQuantity_' + id).text(current_stock - 1);
         var count = parseInt($('#increment-cart').text(), 10);
         $('#increment-cart').text(count + 1);
-        $.post('/carts/', {'id': id});
+        $.post('/carts/', {
+            'id': id
+        });
     });
 }
 $(document).ready(setClickHandlers);

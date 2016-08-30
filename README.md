@@ -26,7 +26,7 @@ cart.
 with discounts applied.
 * As a User I am alerted when I apply an invalid voucher to my shopping
 cart.
-* As a User I am unable to Out of Stock products to the shopping cart.
+* As a User I am unable add Out of Stock products to the shopping cart.
 
 
 ##Technologies Used
@@ -35,7 +35,7 @@ cart.
 * JQuery for frontend
 * Rspec and Capybara for testing
 * Erb(templating engine)
-* Javascript
+* Javascript  
 * Bootstrap
 * CSS and HTML
 

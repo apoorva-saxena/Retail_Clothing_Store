@@ -15,58 +15,56 @@
     </thead>
     <tbody>
         <% @product_map.each do |product, count| %>
-        <tr>
-            <td class="col-sm-3">
-                <%= image_tag(product.image, alt: "Image not available", size: "100x100") %>
-            </td>
-            <td class="col-sm-3">
-                <%= product.name %>
-            </td>
-            <td class="col-sm-1">
-                <%= product.price %>
-            </td>
-            <td class="col-sm-1">
-                <%= count %>
-            </td>
-            <td class="col-sm-1">
-                <strong><%= product.price * count %></strong>
-            </td>
-            <td>
-                <form method="GET" action="/remove_from_session/<%=product.id%>">
-                    <input type="submit" name="remove" value="Remove item" class="removeitem btn btn-danger" id=<%=product.id%>>
-                </form>
-            </td>
-        </tr>
+            <tr>
+                <td class="col-sm-3">
+                    <%= image_tag(product.image, alt: "Image not available", size: "100x100") %>
+                </td>
+                <td class="col-sm-3">
+                    <%= product.name %>
+                </td>
+                <td class="col-sm-1">
+                    <%= product.price %>
+                </td>
+                <td class="col-sm-1">
+                    <%= count %>
+                </td>
+                <td class="col-sm-1">
+                    <strong><%= product.price * count %></strong>
+                </td>
+                <td>
+                    <form method="GET" action="/remove_from_session/<%=product.id%>">
+                        <input type="submit" name="remove" value="Remove item" class="removeitem btn btn-danger" id=<%=product.id%>>
+                    </form>
+                </td>
+            </tr>
         <% end %>
-
     </tbody>
 </table>
+
 <table class="table table-hover">
 <tbody>
   <tr>
     <td class="col-sm-6 text-align: left"></td>
-  <td class="col-sm-3"> <strong> Total bill: <div id="finalBill"><%=@bill_without_voucher %></div> <strong></td>
+  <td class="col-sm-3"> <strong> Total bill: <div id="finalBill">£<%=@bill_without_voucher %></div> <strong></td>
   </tr>
   <tr>
       <td class="col-sm-6 text-align: left"></td>
-  <td class="col-sm-3 "> <strong> Bill with vouchers: <div id="finalbillwithvoucher"><%=@bill_with_voucher %></div> <strong></td>
+  <td class="col-sm-3 "> <strong> Bill with voucher: <div id="finalbillwithvoucher">£<%=@bill_with_voucher %></div> <strong></td>
   </tr>
 </tbody>
 </table>
-<br>
-<br>
-<br>
+<br><br><br>
 <h4> Vouchers: </h4>
 <%= form_tag("/voucher/apply", method: "post") do %>
-<% @vouchers.each do |voucher| %>
-<% if voucher.id == @voucher_enabled %>
-  <%=radio_button_tag('voucher_id', voucher.id, true) %>
-<% else %>
-  <%=radio_button_tag('voucher_id', voucher.id) %>
-<%end%>
-<%= label_tag(voucher.id, voucher.name) %>
-<br>
-<% end %>
+    <% @vouchers.each do |voucher| %>
+        <% if voucher.id == @voucher_enabled %>
+            <%=radio_button_tag('voucher_id', voucher.id, true) %>
+        <% else %>
+            <%=radio_button_tag('voucher_id', voucher.id) %>
+        <%end%>
+        <%= label_tag(voucher.id, voucher.name) %>
+        <br>
+    <% end %>
 <%= submit_tag("Apply Voucher") %>
 <% end %>
 

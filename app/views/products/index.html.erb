@@ -1,8 +1,10 @@
 <div class="panel panel-default">
     <div class="panel-body">
-        <a href="/carts"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+        <a href="/carts">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+        </a>
         <div id="increment-cart">
-            <%=@cart_size%>
+            <%=get_cart_size%>
         </div>
     </div>
     <div class="shopname">The Retail Shop</div>
@@ -11,27 +13,27 @@
     </div>
 </div>
 <div class="container">
-<% @products.each do |product| %>
-<div class="col-sm-4" class="container">
-<%= image_tag(product.image, alt: "Image not available", size: "110x125") %>
-<br>
-<%= product.name %>
-<br>
-<%= product.category %>
-<br>
-£<%= product.price %>
-<br>
-<span id="productQuantity_<%= product.id %>">
-    <%= product.quantity - @product_map[product]%>
-</span>
-in stock
-<br>
-<% if product.quantity == @product_map[product]%>
-<button type="button" class="product_buttons btn btn-success" id=<%=product.id%> disabled>
-  <%else %>
-<button type="button" class="product_buttons btn btn-success" id=<%=product.id%> enabled>
-<%end%>
-    Add to cart</button>
-</div>
-<% end %>
+    <% @products.each do |product| %>
+        <div class="col-sm-4" class="container">
+            <%= image_tag(product.image, alt: "Image not available", size: "110x125") %>
+            <br>
+            <%= product.name %>
+            <br>
+            <%= product.category %>
+            <br>
+            £<%= product.price %>
+            <br>
+            <span id="productQuantity_<%= product.id %>">
+                <%= product.quantity - product_count_in_cart(product)%>
+            </span>
+            in stock
+            <br>
+            <% if product.quantity == product_count_in_cart(product)%>
+                <button type="button" class="product_buttons btn btn-success" id=<%=product.id%> disabled>
+            <%else %>
+                <button type="button" class="product_buttons btn btn-success" id=<%=product.id%> enabled>
+            <%end%>
+            Add to cart</button>
+        </div>
+    <% end %>
 </div>
