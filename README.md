@@ -93,22 +93,22 @@ The code is structured as a standard ruby on rails app and the notable files/fol
 
 ## Brief Overview
 
-* The main aims were:
-  To make the website simple, stable and functional.
-  Make the Voucher logic generic and extendable.
-  Not to over-engineer the cart logic.
-  Avoid using heavy frontend frameworks and use minimal jquery when required.
-  Render most of the code from the backend using simple templating in rails.
-  Fully cover all the features with feature tests and unit tests for the models.
+### The main aims were:  
+* To make the website simple, stable and functional. 
+* Make the Voucher logic generic and extendable. 
+* Not to over-engineer the cart logic. 
+* Avoid using heavy frontend frameworks and use minimal jquery when required. 
+* Render most of the code from the backend using simple templating in rails. 
+* Fully cover all the features with feature tests and unit tests for the models. 
 
-* Decisions:
-  Why ruby on rails? Because the project fitted neatly into a MVC paradigm and Rails helps generate the skeleton of the app helping us to not re-invent the wheel. It is also a very mature framework and quite stable.
+### Decisions:
+* Why ruby on rails? Because the project fitted neatly into a MVC paradigm and Rails helps generate the skeleton of the app helping us to not re-invent the wheel. It is also a very mature framework and quite stable.
 
-  Why jquery and minimal javascript? Because most of the website is rendered from the backend and only small things (for example incrementing the cart count) were done in jquery.
+* Why jquery and minimal javascript? Because most of the website is rendered from the backend and only small things (for example incrementing the cart count) were done in jquery.
   
-  Why have a model for vouchers? This makes it easily extendable, and the logic does not hardcode any voucher features in any place. Thus we can just add more rows to the voucher table (even an xml/flat file should have worked, but I already had a db so used that) and it will display and work by itself
+* Why have a model for vouchers? This makes it easily extendable, and the logic does not hardcode any voucher features in any place. Thus we can just add more rows to the voucher table (even an xml/flat file should have worked, but I already had a db so used that) and it will display and work by itself
   
-  Why store cart in the session? Like most ecommerce websites, it makes sense to persist items for repeat visits of customers even when they are logged in. If we just stored it in memory the data would have been lost on the second visit. Sessions are inherently simple to use in rails and can be just used as a dictionary (session[:cart] in our case). When the count of each product is needed we just loop through this and get the count map.
+* Why store cart in the session? Like most ecommerce websites, it makes sense to persist items for repeat visits of customers even when they are logged in. If we just stored it in memory the data would have been lost on the second visit. Sessions are inherently simple to use in rails and can be just used as a dictionary (session[:cart] in our case). When the count of each product is needed we just loop through this and get the count map.
   
-  Why Capybara and rspec? Well integrated with ruby on rails and allows for more human-readable yet powerful tests. 
+* Why Capybara and rspec? Well integrated with ruby on rails and allows for more human-readable yet powerful tests. 
   
