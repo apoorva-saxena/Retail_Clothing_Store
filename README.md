@@ -9,7 +9,7 @@ The website displays all the products, the user can add products to his cart and
 The list of products and vouchers were supplied beforehand.
 
 
-The initial Products page
+The initial Products page (If a product gets out of stock the button is automatically disabled)
 ![Image1](https://raw.githubusercontent.com/apsaxena24/Retail_Clothing_Store/master/screenshots/1.png)
 
 The carts page
