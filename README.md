@@ -1,8 +1,10 @@
 #Retail Store
 
-An website used for selling clothes and footwears
+Heroku Link: https://retail-clothing-store.herokuapp.com/products
 
-The website displays all the products, the user can add products to his cart and apply suitable vouchers to get some discounts on the final product
+A website used for selling clothes and footwears
+
+The website displays all the products, the user can add products to his cart and apply suitable vouchers to get some discounts on the final bill.
 
 The list of products and vouchers were supplied beforehand.
 
