@@ -6,12 +6,17 @@ The website displays all the products, the user can add products to his cart and
 
 The list of products and vouchers were supplied beforehand.
 
+
+The initial Products page
 ![Image1](https://raw.githubusercontent.com/apsaxena24/Retail_Clothing_Store/master/screenshots/1.png)
 
+The carts page
 ![Image2](https://raw.githubusercontent.com/apsaxena24/Retail_Clothing_Store/master/screenshots/2.png)
 
+Voucher applied successfully!
 ![Image3](https://raw.githubusercontent.com/apsaxena24/Retail_Clothing_Store/master/screenshots/3.png)
 
+Voucher not applicable for the product!
 ![Image4](https://raw.githubusercontent.com/apsaxena24/Retail_Clothing_Store/master/screenshots/4.png)
 
 
