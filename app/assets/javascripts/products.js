@@ -3,7 +3,7 @@ function setClickHandlers() {
         var id = this.id;
         var current_stock = parseInt($('#productQuantity_' + id).text(), 10);
         if (current_stock == 1) {
-            $(id).disabled = true;
+            $(this).attr("disabled","disabled");
         }
         $('#productQuantity_' + id).text(current_stock - 1);
         var count = parseInt($('#increment-cart').text(), 10);
