@@ -58,6 +58,7 @@ bin/rake db:seed
 bin/rails s
 open http://localhost:3000
 ```
+You might want to install `libpq-dev` on ubuntu for `bundle` to be successful.
 
 ##How to run tests
 
